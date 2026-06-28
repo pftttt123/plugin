@@ -1,0 +1,15 @@
+# Python backend
+.venv/
+__pycache__/
+*.pyc
+carspotter.db
+
+# Android / Gradle
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+android/captures/
+*.iml
+.DS_Store

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Local development only: allow cleartext HTTP so the app can reach a backend
+  running on your computer (localhost via `adb reverse`, a LAN IP, or the
+  emulator's 10.0.2.2). Image hosts use HTTPS and are unaffected.
+-->
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">10.0.2.2</domain>
+        <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">127.0.0.1</domain>
+        <!-- Add your PC's LAN IP here if testing over Wi-Fi, e.g.: -->
+        <domain includeSubdomains="true">192.168.0.0</domain>
+        <domain includeSubdomains="true">192.168.1.0</domain>
+    </domain-config>
+</network-security-config>
