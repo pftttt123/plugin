@@ -1,0 +1,61 @@
+name: Car Spotter Android Build
+
+on:
+  push:
+    branches: [ "claude/car-spotter-app-c1yb3g" ]
+    paths: [ "car-spotter/android/**", ".github/workflows/car-spotter-android.yml" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: car-spotter/android
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Generate Gradle wrapper
+        # gradle-wrapper.jar is binary and not committed; recreate it pinned to 8.9.
+        run: gradle wrapper --gradle-version 8.9
+
+      - name: Build debug APK
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: car-spotter-debug-apk
+          path: car-spotter/android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+
+      - name: Publish APK to a Release (direct download link)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: car-spotter-latest
+          name: Car Spotter (latest debug build)
+          body: |
+            Debug APK built from `${{ github.sha }}`.
+
+            Install on your phone (USB debugging on, device plugged in):
+            `adb install app-debug.apk`
+            or just open the .apk on the device and allow install from this source.
+
+            Note: this debug build defaults to `BASE_URL = http://10.0.2.2:8000/`
+            (the emulator address). For a physical phone, change `BASE_URL` in
+            `car-spotter/android/app/build.gradle.kts` and rebuild, or run the
+            backend and use `adb reverse tcp:8000 tcp:8000`.
+          prerelease: true
+          files: car-spotter/android/app/build/outputs/apk/debug/app-debug.apk
