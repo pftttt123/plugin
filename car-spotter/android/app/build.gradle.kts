@@ -17,11 +17,11 @@ android {
         versionName = "1.0"
         vectorDrawables { useSupportLibrary = true }
 
-        // Where the app finds the backend. Override per device setup:
-        //   USB + `adb reverse tcp:8000 tcp:8000` -> http://localhost:8000/
+        // Where the app finds the backend. Default is adb-reverse-friendly:
+        //   USB + `adb reverse tcp:8000 tcp:8000` -> http://localhost:8000/  (default)
         //   Same Wi-Fi                            -> http://<your-pc-ip>:8000/
         //   Android emulator                      -> http://10.0.2.2:8000/
-        buildConfigField("String", "BASE_URL", "\"http://10.0.2.2:8000/\"")
+        buildConfigField("String", "BASE_URL", "\"http://localhost:8000/\"")
     }
 
     buildTypes {

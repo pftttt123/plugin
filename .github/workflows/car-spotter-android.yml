@@ -49,13 +49,17 @@ jobs:
           body: |
             Debug APK built from `${{ github.sha }}`.
 
-            Install on your phone (USB debugging on, device plugged in):
-            `adb install app-debug.apk`
-            or just open the .apk on the device and allow install from this source.
+            This build defaults to `BASE_URL = http://localhost:8000/`, which is
+            adb-reverse-friendly. To use it on a phone over USB:
 
-            Note: this debug build defaults to `BASE_URL = http://10.0.2.2:8000/`
-            (the emulator address). For a physical phone, change `BASE_URL` in
-            `car-spotter/android/app/build.gradle.kts` and rebuild, or run the
-            backend and use `adb reverse tcp:8000 tcp:8000`.
+            1. Start the backend on your computer:
+               `uvicorn app.main:app --host 0.0.0.0 --port 8000`
+            2. Enable USB debugging, plug the phone in, then run:
+               `adb reverse tcp:8000 tcp:8000`
+            3. Install the app: `adb install app-debug.apk`
+               (or open the .apk on the device and allow install from this source).
+
+            The phone's localhost:8000 then tunnels to your computer's backend.
+            For Wi-Fi instead, set `BASE_URL` to your PC's LAN IP and rebuild.
           prerelease: true
           files: car-spotter/android/app/build/outputs/apk/debug/app-debug.apk

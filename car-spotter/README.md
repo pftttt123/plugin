@@ -109,9 +109,9 @@ You need **Android Studio** (Hedgehog or newer) installed.
 
    | How you test | `BASE_URL` | Extra step |
    |--------------|-----------|------------|
-   | **Real phone over USB** *(recommended)* | `http://localhost:8000/` | enable USB debugging, then run `adb reverse tcp:8000 tcp:8000` |
+   | **Real phone over USB** *(default)* | `http://localhost:8000/` | enable USB debugging, then run `adb reverse tcp:8000 tcp:8000` |
    | **Phone on same Wi-Fi** | `http://<your-PC-LAN-IP>:8000/` | add that IP to `res/xml/network_security_config.xml` |
-   | **Android emulator** | `http://10.0.2.2:8000/` *(default)* | none |
+   | **Android emulator** | `http://10.0.2.2:8000/` | none |
 
 3. **Build & install.** Press **Run ▶** in Android Studio, or from the terminal:
 
