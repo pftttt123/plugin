@@ -1,0 +1,213 @@
+{
+  "manufacturers": [
+    {
+      "name": "Audi",
+      "country": "Germany",
+      "cars": [
+        {"model": "A4", "year_start": 1994, "year_end": null, "generation": "B9", "body_type": "Sedan", "wiki": "Audi A4"},
+        {"model": "A6", "year_start": 1994, "year_end": null, "generation": "C8", "body_type": "Sedan", "wiki": "Audi A6"},
+        {"model": "Q5", "year_start": 2008, "year_end": null, "generation": "FY", "body_type": "SUV", "wiki": "Audi Q5"},
+        {"model": "R8", "year_start": 2006, "year_end": 2024, "generation": "Type 4S", "body_type": "Coupe", "wiki": "Audi R8"},
+        {"model": "TT", "year_start": 1998, "year_end": 2023, "generation": "Mk3", "body_type": "Coupe", "wiki": "Audi TT"},
+        {"model": "e-tron GT", "year_start": 2020, "year_end": null, "generation": "1st gen", "body_type": "Sedan", "wiki": "Audi e-tron GT"}
+      ]
+    },
+    {
+      "name": "BMW",
+      "country": "Germany",
+      "cars": [
+        {"model": "3 Series", "year_start": 1975, "year_end": null, "generation": "G20", "body_type": "Sedan", "wiki": "BMW 3 Series"},
+        {"model": "5 Series", "year_start": 1972, "year_end": null, "generation": "G60", "body_type": "Sedan", "wiki": "BMW 5 Series"},
+        {"model": "X5", "year_start": 1999, "year_end": null, "generation": "G05", "body_type": "SUV", "wiki": "BMW X5"},
+        {"model": "M3", "year_start": 1986, "year_end": null, "generation": "G80", "body_type": "Sedan", "wiki": "BMW M3"},
+        {"model": "i8", "year_start": 2014, "year_end": 2020, "generation": "1st gen", "body_type": "Coupe", "wiki": "BMW i8"},
+        {"model": "Z4", "year_start": 2002, "year_end": null, "generation": "G29", "body_type": "Convertible", "wiki": "BMW Z4"}
+      ]
+    },
+    {
+      "name": "Chevrolet",
+      "country": "United States",
+      "cars": [
+        {"model": "Camaro", "year_start": 1966, "year_end": 2024, "generation": "6th gen", "body_type": "Coupe", "wiki": "Chevrolet Camaro"},
+        {"model": "Corvette", "year_start": 1953, "year_end": null, "generation": "C8", "body_type": "Coupe", "wiki": "Chevrolet Corvette"},
+        {"model": "Silverado", "year_start": 1998, "year_end": null, "generation": "4th gen", "body_type": "Pickup", "wiki": "Chevrolet Silverado"},
+        {"model": "Tahoe", "year_start": 1994, "year_end": null, "generation": "5th gen", "body_type": "SUV", "wiki": "Chevrolet Tahoe"},
+        {"model": "Malibu", "year_start": 1964, "year_end": 2024, "generation": "9th gen", "body_type": "Sedan", "wiki": "Chevrolet Malibu"},
+        {"model": "Bolt EV", "year_start": 2016, "year_end": 2023, "generation": "1st gen", "body_type": "Hatchback", "wiki": "Chevrolet Bolt"}
+      ]
+    },
+    {
+      "name": "Dodge",
+      "country": "United States",
+      "cars": [
+        {"model": "Challenger", "year_start": 1969, "year_end": 2023, "generation": "3rd gen", "body_type": "Coupe", "wiki": "Dodge Challenger"},
+        {"model": "Charger", "year_start": 1966, "year_end": null, "generation": "7th gen", "body_type": "Sedan", "wiki": "Dodge Charger"},
+        {"model": "Durango", "year_start": 1997, "year_end": null, "generation": "3rd gen", "body_type": "SUV", "wiki": "Dodge Durango"},
+        {"model": "Viper", "year_start": 1991, "year_end": 2017, "generation": "5th gen", "body_type": "Coupe", "wiki": "Dodge Viper"}
+      ]
+    },
+    {
+      "name": "Ferrari",
+      "country": "Italy",
+      "cars": [
+        {"model": "488", "year_start": 2015, "year_end": 2019, "generation": "1st gen", "body_type": "Coupe", "wiki": "Ferrari 488"},
+        {"model": "F8 Tributo", "year_start": 2019, "year_end": 2023, "generation": "1st gen", "body_type": "Coupe", "wiki": "Ferrari F8"},
+        {"model": "812 Superfast", "year_start": 2017, "year_end": null, "generation": "1st gen", "body_type": "Coupe", "wiki": "Ferrari 812 Superfast"},
+        {"model": "Roma", "year_start": 2020, "year_end": null, "generation": "1st gen", "body_type": "Coupe", "wiki": "Ferrari Roma"},
+        {"model": "SF90 Stradale", "year_start": 2019, "year_end": null, "generation": "1st gen", "body_type": "Coupe", "wiki": "Ferrari SF90 Stradale"},
+        {"model": "Portofino", "year_start": 2017, "year_end": null, "generation": "1st gen", "body_type": "Convertible", "wiki": "Ferrari Portofino"}
+      ]
+    },
+    {
+      "name": "Ford",
+      "country": "United States",
+      "cars": [
+        {"model": "Mustang", "year_start": 1964, "year_end": null, "generation": "S650", "body_type": "Coupe", "wiki": "Ford Mustang"},
+        {"model": "F-150", "year_start": 1975, "year_end": null, "generation": "14th gen", "body_type": "Pickup", "wiki": "Ford F-Series"},
+        {"model": "Explorer", "year_start": 1990, "year_end": null, "generation": "6th gen", "body_type": "SUV", "wiki": "Ford Explorer"},
+        {"model": "Focus", "year_start": 1998, "year_end": 2025, "generation": "4th gen", "body_type": "Hatchback", "wiki": "Ford Focus"},
+        {"model": "GT", "year_start": 2004, "year_end": 2022, "generation": "2nd gen", "body_type": "Coupe", "wiki": "Ford GT"},
+        {"model": "Bronco", "year_start": 1965, "year_end": null, "generation": "6th gen", "body_type": "SUV", "wiki": "Ford Bronco"}
+      ]
+    },
+    {
+      "name": "Honda",
+      "country": "Japan",
+      "cars": [
+        {"model": "Civic", "year_start": 1972, "year_end": null, "generation": "11th gen", "body_type": "Sedan", "wiki": "Honda Civic"},
+        {"model": "Accord", "year_start": 1976, "year_end": null, "generation": "11th gen", "body_type": "Sedan", "wiki": "Honda Accord"},
+        {"model": "CR-V", "year_start": 1995, "year_end": null, "generation": "6th gen", "body_type": "SUV", "wiki": "Honda CR-V"},
+        {"model": "Fit", "year_start": 2001, "year_end": 2020, "generation": "3rd gen", "body_type": "Hatchback", "wiki": "Honda Fit"},
+        {"model": "NSX", "year_start": 1990, "year_end": 2022, "generation": "2nd gen", "body_type": "Coupe", "wiki": "Honda NSX"},
+        {"model": "Pilot", "year_start": 2002, "year_end": null, "generation": "4th gen", "body_type": "SUV", "wiki": "Honda Pilot"}
+      ]
+    },
+    {
+      "name": "Hyundai",
+      "country": "South Korea",
+      "cars": [
+        {"model": "Elantra", "year_start": 1990, "year_end": null, "generation": "7th gen", "body_type": "Sedan", "wiki": "Hyundai Elantra"},
+        {"model": "Sonata", "year_start": 1985, "year_end": null, "generation": "8th gen", "body_type": "Sedan", "wiki": "Hyundai Sonata"},
+        {"model": "Tucson", "year_start": 2004, "year_end": null, "generation": "4th gen", "body_type": "SUV", "wiki": "Hyundai Tucson"},
+        {"model": "Santa Fe", "year_start": 2000, "year_end": null, "generation": "4th gen", "body_type": "SUV", "wiki": "Hyundai Santa Fe"},
+        {"model": "Ioniq 5", "year_start": 2021, "year_end": null, "generation": "1st gen", "body_type": "Hatchback", "wiki": "Hyundai Ioniq 5"},
+        {"model": "Kona", "year_start": 2017, "year_end": null, "generation": "2nd gen", "body_type": "SUV", "wiki": "Hyundai Kona"}
+      ]
+    },
+    {
+      "name": "Jeep",
+      "country": "United States",
+      "cars": [
+        {"model": "Wrangler", "year_start": 1986, "year_end": null, "generation": "JL", "body_type": "SUV", "wiki": "Jeep Wrangler"},
+        {"model": "Grand Cherokee", "year_start": 1992, "year_end": null, "generation": "WL", "body_type": "SUV", "wiki": "Jeep Grand Cherokee"},
+        {"model": "Cherokee", "year_start": 1974, "year_end": 2023, "generation": "KL", "body_type": "SUV", "wiki": "Jeep Cherokee"},
+        {"model": "Compass", "year_start": 2006, "year_end": null, "generation": "2nd gen", "body_type": "SUV", "wiki": "Jeep Compass"},
+        {"model": "Gladiator", "year_start": 2019, "year_end": null, "generation": "JT", "body_type": "Pickup", "wiki": "Jeep Gladiator"}
+      ]
+    },
+    {
+      "name": "Lamborghini",
+      "country": "Italy",
+      "cars": [
+        {"model": "Aventador", "year_start": 2011, "year_end": 2022, "generation": "1st gen", "body_type": "Coupe", "wiki": "Lamborghini Aventador"},
+        {"model": "Huracán", "year_start": 2014, "year_end": null, "generation": "1st gen", "body_type": "Coupe", "wiki": "Lamborghini Huracán"},
+        {"model": "Urus", "year_start": 2018, "year_end": null, "generation": "1st gen", "body_type": "SUV", "wiki": "Lamborghini Urus"},
+        {"model": "Gallardo", "year_start": 2003, "year_end": 2013, "generation": "1st gen", "body_type": "Coupe", "wiki": "Lamborghini Gallardo"},
+        {"model": "Countach", "year_start": 1974, "year_end": 1990, "generation": "Classic", "body_type": "Coupe", "wiki": "Lamborghini Countach"}
+      ]
+    },
+    {
+      "name": "Mazda",
+      "country": "Japan",
+      "cars": [
+        {"model": "MX-5 Miata", "year_start": 1989, "year_end": null, "generation": "ND", "body_type": "Convertible", "wiki": "Mazda MX-5"},
+        {"model": "Mazda3", "year_start": 2003, "year_end": null, "generation": "4th gen", "body_type": "Hatchback", "wiki": "Mazda3"},
+        {"model": "CX-5", "year_start": 2012, "year_end": null, "generation": "2nd gen", "body_type": "SUV", "wiki": "Mazda CX-5"},
+        {"model": "Mazda6", "year_start": 2002, "year_end": 2021, "generation": "3rd gen", "body_type": "Sedan", "wiki": "Mazda6"},
+        {"model": "RX-7", "year_start": 1978, "year_end": 2002, "generation": "FD", "body_type": "Coupe", "wiki": "Mazda RX-7"}
+      ]
+    },
+    {
+      "name": "Mercedes-Benz",
+      "country": "Germany",
+      "cars": [
+        {"model": "C-Class", "year_start": 1993, "year_end": null, "generation": "W206", "body_type": "Sedan", "wiki": "Mercedes-Benz C-Class"},
+        {"model": "E-Class", "year_start": 1953, "year_end": null, "generation": "W214", "body_type": "Sedan", "wiki": "Mercedes-Benz E-Class"},
+        {"model": "S-Class", "year_start": 1972, "year_end": null, "generation": "W223", "body_type": "Sedan", "wiki": "Mercedes-Benz S-Class"},
+        {"model": "G-Class", "year_start": 1979, "year_end": null, "generation": "W463", "body_type": "SUV", "wiki": "Mercedes-Benz G-Class"},
+        {"model": "GLE", "year_start": 1997, "year_end": null, "generation": "W167", "body_type": "SUV", "wiki": "Mercedes-Benz GLE"},
+        {"model": "AMG GT", "year_start": 2014, "year_end": null, "generation": "2nd gen", "body_type": "Coupe", "wiki": "Mercedes-AMG GT"}
+      ]
+    },
+    {
+      "name": "Nissan",
+      "country": "Japan",
+      "cars": [
+        {"model": "GT-R", "year_start": 2007, "year_end": null, "generation": "R35", "body_type": "Coupe", "wiki": "Nissan GT-R"},
+        {"model": "Z", "year_start": 1969, "year_end": null, "generation": "RZ34", "body_type": "Coupe", "wiki": "Nissan Z (RZ34)"},
+        {"model": "Altima", "year_start": 1992, "year_end": null, "generation": "6th gen", "body_type": "Sedan", "wiki": "Nissan Altima"},
+        {"model": "Rogue", "year_start": 2007, "year_end": null, "generation": "3rd gen", "body_type": "SUV", "wiki": "Nissan Rogue"},
+        {"model": "Leaf", "year_start": 2010, "year_end": null, "generation": "2nd gen", "body_type": "Hatchback", "wiki": "Nissan Leaf"}
+      ]
+    },
+    {
+      "name": "Porsche",
+      "country": "Germany",
+      "cars": [
+        {"model": "911", "year_start": 1964, "year_end": null, "generation": "992", "body_type": "Coupe", "wiki": "Porsche 911"},
+        {"model": "Cayenne", "year_start": 2002, "year_end": null, "generation": "3rd gen", "body_type": "SUV", "wiki": "Porsche Cayenne"},
+        {"model": "Panamera", "year_start": 2009, "year_end": null, "generation": "2nd gen", "body_type": "Sedan", "wiki": "Porsche Panamera"},
+        {"model": "Taycan", "year_start": 2019, "year_end": null, "generation": "1st gen", "body_type": "Sedan", "wiki": "Porsche Taycan"},
+        {"model": "718 Cayman", "year_start": 2005, "year_end": null, "generation": "982", "body_type": "Coupe", "wiki": "Porsche Cayman"},
+        {"model": "718 Boxster", "year_start": 1996, "year_end": null, "generation": "982", "body_type": "Convertible", "wiki": "Porsche Boxster"}
+      ]
+    },
+    {
+      "name": "Subaru",
+      "country": "Japan",
+      "cars": [
+        {"model": "WRX", "year_start": 1992, "year_end": null, "generation": "VB", "body_type": "Sedan", "wiki": "Subaru WRX"},
+        {"model": "Impreza", "year_start": 1992, "year_end": null, "generation": "6th gen", "body_type": "Hatchback", "wiki": "Subaru Impreza"},
+        {"model": "Outback", "year_start": 1994, "year_end": null, "generation": "6th gen", "body_type": "Wagon", "wiki": "Subaru Outback"},
+        {"model": "Forester", "year_start": 1997, "year_end": null, "generation": "5th gen", "body_type": "SUV", "wiki": "Subaru Forester"},
+        {"model": "BRZ", "year_start": 2012, "year_end": null, "generation": "2nd gen", "body_type": "Coupe", "wiki": "Subaru BRZ"}
+      ]
+    },
+    {
+      "name": "Tesla",
+      "country": "United States",
+      "cars": [
+        {"model": "Model S", "year_start": 2012, "year_end": null, "generation": "1st gen", "body_type": "Sedan", "wiki": "Tesla Model S"},
+        {"model": "Model 3", "year_start": 2017, "year_end": null, "generation": "1st gen", "body_type": "Sedan", "wiki": "Tesla Model 3"},
+        {"model": "Model X", "year_start": 2015, "year_end": null, "generation": "1st gen", "body_type": "SUV", "wiki": "Tesla Model X"},
+        {"model": "Model Y", "year_start": 2020, "year_end": null, "generation": "1st gen", "body_type": "SUV", "wiki": "Tesla Model Y"},
+        {"model": "Cybertruck", "year_start": 2023, "year_end": null, "generation": "1st gen", "body_type": "Pickup", "wiki": "Tesla Cybertruck"}
+      ]
+    },
+    {
+      "name": "Toyota",
+      "country": "Japan",
+      "cars": [
+        {"model": "Corolla", "year_start": 1966, "year_end": null, "generation": "12th gen", "body_type": "Sedan", "wiki": "Toyota Corolla"},
+        {"model": "Camry", "year_start": 1982, "year_end": null, "generation": "9th gen", "body_type": "Sedan", "wiki": "Toyota Camry"},
+        {"model": "Supra", "year_start": 1978, "year_end": null, "generation": "A90", "body_type": "Coupe", "wiki": "Toyota Supra"},
+        {"model": "RAV4", "year_start": 1994, "year_end": null, "generation": "5th gen", "body_type": "SUV", "wiki": "Toyota RAV4"},
+        {"model": "Land Cruiser", "year_start": 1951, "year_end": null, "generation": "300 Series", "body_type": "SUV", "wiki": "Toyota Land Cruiser"},
+        {"model": "Prius", "year_start": 1997, "year_end": null, "generation": "5th gen", "body_type": "Hatchback", "wiki": "Toyota Prius"},
+        {"model": "GR86", "year_start": 2012, "year_end": null, "generation": "2nd gen", "body_type": "Coupe", "wiki": "Toyota 86"}
+      ]
+    },
+    {
+      "name": "Volkswagen",
+      "country": "Germany",
+      "cars": [
+        {"model": "Golf", "year_start": 1974, "year_end": null, "generation": "Mk8", "body_type": "Hatchback", "wiki": "Volkswagen Golf"},
+        {"model": "Golf GTI", "year_start": 1976, "year_end": null, "generation": "Mk8", "body_type": "Hatchback", "wiki": "Volkswagen Golf GTI"},
+        {"model": "Beetle", "year_start": 1938, "year_end": 2019, "generation": "A5", "body_type": "Hatchback", "wiki": "Volkswagen Beetle"},
+        {"model": "Passat", "year_start": 1973, "year_end": null, "generation": "B9", "body_type": "Sedan", "wiki": "Volkswagen Passat"},
+        {"model": "Tiguan", "year_start": 2007, "year_end": null, "generation": "3rd gen", "body_type": "SUV", "wiki": "Volkswagen Tiguan"},
+        {"model": "ID.4", "year_start": 2020, "year_end": null, "generation": "1st gen", "body_type": "SUV", "wiki": "Volkswagen ID.4"}
+      ]
+    }
+  ]
+}
