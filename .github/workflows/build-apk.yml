@@ -25,6 +25,13 @@ jobs:
           distribution: temurin
           java-version: "17"
 
+      - name: Restore cached car images
+        uses: actions/cache@v4
+        with:
+          path: car-spotter/app/src/main/assets/images
+          key: car-images-${{ hashFiles('car-spotter/app/src/main/assets/cars.json') }}
+          restore-keys: car-images-
+
       - name: Fetch car images from Wikipedia
         run: |
           python3 -m pip install --quiet requests pillow
