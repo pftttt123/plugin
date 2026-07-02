@@ -2,6 +2,12 @@ name: Scrape netcarshow catalog
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - claude/car-spotter-android-app-xm2tqs
+    paths:
+      - "car-spotter/tools/scrape_netcarshow.py"
+      - ".github/workflows/scrape-catalog.yml"
 
 permissions:
   contents: write
