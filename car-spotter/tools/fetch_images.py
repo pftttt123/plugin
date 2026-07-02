@@ -157,8 +157,9 @@ def main():
         print("\nMissing images (placeholder or remote photo shown in app):")
         for cid, err in failures:
             print(f"  {cid}: {err}")
-    attempted_ok = len(pending) - len(failures)
-    if pending and attempted_ok < len(pending) * 0.7:
+    # Judge health by overall coverage (cache included), not just this run's
+    # attempts — otherwise one stubborn straggler fails every cached build.
+    if cars and ok < len(cars) * 0.7:
         print("Too many image fetches failed; aborting build.", file=sys.stderr)
         return 1
     return 0
