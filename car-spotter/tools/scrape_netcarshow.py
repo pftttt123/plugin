@@ -214,12 +214,46 @@ def resolve_wiki_images(session, titles):
     return thumbs
 
 
+TRIM_WORDS_RE = re.compile(
+    r"\b(concept|prototype|study|edition|cabriolet|cabrio|convertible|coupe|"
+    r"sedan|saloon|wagon|estate|avant|touring|sportback|gran\s+coupe|"
+    r"spider|spyder|roadster|gran\s+turismo|sport\s+turismo|shooting\s+brake|"
+    r"targa|phev|hybrid|e-tron|allroad|cross|van|swb|lwb|us-version|"
+    r"uk-version|eu-version)\b.*$",
+    re.I,
+)
+
+
+def title_candidates(make, model):
+    """Wikipedia title guesses for a car, most specific first."""
+    cands = [f"{make} {model}"]
+    base = TRIM_WORDS_RE.sub("", model).strip(" -–")
+    if base and base.lower() != model.lower():
+        cands.append(f"{make} {base}")
+    tokens = model.split()
+    if len(tokens) >= 3:
+        cands.append(f"{make} {tokens[0]} {tokens[1]}")
+    if len(tokens) >= 2:
+        cands.append(f"{make} {tokens[0]}")
+    seen, out = set(), []
+    for c in cands:
+        key = c.lower()
+        if key not in seen:
+            seen.add(key)
+            out.append(c)
+    return out
+
+
 def main():
     existing = json.loads(CARS_JSON.read_text(encoding="utf-8"))
+    # Entries with a "wiki" title are the hand-curated set (bundled photos);
+    # everything else was produced by a previous scrape and is regenerated so
+    # re-runs can refresh years and photo URLs.
+    curated = [c for c in existing if c.get("wiki")]
     curated_keys = {
-        re.sub(r"[^a-z0-9]", "", (c["make"] + c["model"]).lower()) for c in existing
+        re.sub(r"[^a-z0-9]", "", (c["make"] + c["model"]).lower()) for c in curated
     }
-    used_ids = {c["id"] for c in existing}
+    used_ids = {c["id"] for c in curated}
 
     session = requests.Session()
     session.headers.update(HEADERS)
@@ -251,24 +285,39 @@ def main():
                     "model": entry["name"],
                     "years": year_str,
                     "body": "",
-                    "wikiTitle": f"{make_name} {entry['name']}",
                 }
             )
 
-    print(f"{len(new_cars)} new cars to add (after deduplicating against curated set)")
+    print(f"{len(new_cars)} scraped cars to add (curated set kept as-is)")
 
-    titles = sorted({c["wikiTitle"] for c in new_cars})
-    print(f"Resolving {len(titles)} Wikipedia thumbnails…")
-    thumbs = resolve_wiki_images(session, titles)
+    # Resolve photos tier by tier: exact title first, then progressively
+    # broader guesses (trim body/trim words, drop trailing tokens) so
+    # variants inherit their base model's article photo.
+    unresolved = list(new_cars)
     with_img = 0
-    for car in new_cars:
-        img = thumbs.get(car.pop("wikiTitle"))
-        if img:
-            car["img"] = img
-            with_img += 1
-    print(f"{with_img}/{len(new_cars)} new cars got a photo URL")
+    for tier in range(4):
+        wanted = {}
+        for car in unresolved:
+            cands = title_candidates(car["make"], car["model"])
+            if tier < len(cands):
+                wanted[car["id"]] = cands[tier]
+        if not wanted:
+            break
+        titles = sorted(set(wanted.values()))
+        print(f"Tier {tier}: resolving {len(titles)} titles for {len(wanted)} cars…")
+        thumbs = resolve_wiki_images(session, titles)
+        still = []
+        for car in unresolved:
+            img = thumbs.get(wanted.get(car["id"], ""))
+            if img:
+                car["img"] = img
+                with_img += 1
+            else:
+                still.append(car)
+        unresolved = still
+    print(f"{with_img}/{len(new_cars)} scraped cars got a photo URL")
 
-    merged = existing + new_cars
+    merged = curated + new_cars
     merged.sort(key=lambda c: (c["make"].lower(), c["model"].lower()))
     CARS_JSON.write_text(
         "[\n" + ",\n".join(json.dumps(c, ensure_ascii=False) for c in merged) + "\n]\n",

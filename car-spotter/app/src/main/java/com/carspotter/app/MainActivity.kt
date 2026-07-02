@@ -9,8 +9,11 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.Coil
+import coil.ImageLoader
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.progressindicator.LinearProgressIndicator
+import okhttp3.OkHttpClient
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,6 +32,28 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Wikimedia's robot policy rejects requests without a descriptive
+        // User-Agent, so give Coil's HTTP client one before any photo loads.
+        Coil.setImageLoader(
+            ImageLoader.Builder(this)
+                .okHttpClient {
+                    OkHttpClient.Builder()
+                        .addInterceptor { chain ->
+                            chain.proceed(
+                                chain.request().newBuilder()
+                                    .header(
+                                        "User-Agent",
+                                        "CarSpotter/1.1 (Android; +https://github.com/pftttt123/plugin)"
+                                    )
+                                    .build()
+                            )
+                        }
+                        .build()
+                }
+                .crossfade(true)
+                .build()
+        )
 
         setSupportActionBar(findViewById<Toolbar>(R.id.toolbar))
 

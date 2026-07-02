@@ -21,6 +21,15 @@ jobs:
         with:
           ref: claude/car-spotter-android-app-xm2tqs
 
+      - name: Probe Wikimedia UA policy (diagnostics)
+        continue-on-error: true
+        run: |
+          URL="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/2025_Acura_ADX_A-Spec%2C_front_7.19.25.jpg/960px-2025_Acura_ADX_A-Spec%2C_front_7.19.25.jpg"
+          for UA in "okhttp/4.12.0" "CarSpotter/1.1 (Android; +https://github.com/pftttt123/plugin)"; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" -A "$UA" "$URL")
+            echo "UA '$UA' -> HTTP $code"
+          done
+
       - name: Scrape catalog and resolve photos
         run: |
           python3 -m pip install --quiet requests
