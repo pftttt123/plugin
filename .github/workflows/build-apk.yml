@@ -1,0 +1,55 @@
+name: Build Car Spotter APK
+
+on:
+  push:
+    branches:
+      - claude/car-spotter-android-app-xm2tqs
+    paths:
+      - "car-spotter/**"
+      - ".github/workflows/build-apk.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Fetch car images from Wikipedia
+        run: |
+          python3 -m pip install --quiet requests pillow
+          python3 car-spotter/tools/fetch_images.py
+
+      - name: Build debug APK
+        working-directory: car-spotter
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CarSpotter-debug-apk
+          path: car-spotter/app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Publish APK as release
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="car-spotter-build-${{ github.run_number }}"
+          cp car-spotter/app/build/outputs/apk/debug/app-debug.apk CarSpotter.apk
+          gh release create "$TAG" CarSpotter.apk \
+            --title "Car Spotter APK (build ${{ github.run_number }})" \
+            --notes "Installable debug APK built from ${{ github.sha }}. Download CarSpotter.apk, open it on your Android phone, and allow installs from unknown sources." \
+            --target "${{ github.sha }}"

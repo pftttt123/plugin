@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Car Spotter</string>
+    <string name="search_hint">Search manufacturer or model…</string>
+    <string name="filter_all">All</string>
+    <string name="filter_spotted">Spotted</string>
+    <string name="filter_unspotted">Still to find</string>
+    <string name="header_count">%1$d / %2$d spotted</string>
+    <string name="car_details">%1$s • %2$s</string>
+    <string name="progress_format">%1$d of %2$d cars spotted</string>
+    <string name="empty_list">No cars match your search</string>
+    <string name="car_photo">Car photo</string>
+    <string name="spotted">Spotted</string>
+</resources>

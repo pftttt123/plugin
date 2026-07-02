@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#1A5276</color>
+    <color name="primary_dark">#123A54</color>
+    <color name="accent">#F39C12</color>
+    <color name="spotted_green">#2E9E5B</color>
+    <color name="progress_indicator">#F5B041</color>
+    <color name="progress_track">#33FFFFFF</color>
+    <color name="search_bg">#14000000</color>
+</resources>
