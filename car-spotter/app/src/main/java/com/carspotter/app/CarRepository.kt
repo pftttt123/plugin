@@ -30,8 +30,7 @@ object CarRepository {
                 )
             }
             val sorted = cars.sortedWith(
-                compareBy(String.CASE_INSENSITIVE_ORDER) { it: Car -> it.make }
-                    .thenBy(String.CASE_INSENSITIVE_ORDER) { it.model }
+                compareBy({ it.make.lowercase() }, { it.model.lowercase() })
             )
             cache = sorted
             return sorted
