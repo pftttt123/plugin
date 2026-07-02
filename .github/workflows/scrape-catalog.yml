@@ -1,0 +1,33 @@
+name: Scrape netcarshow catalog
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: claude/car-spotter-android-app-xm2tqs
+
+      - name: Scrape catalog and resolve photos
+        run: |
+          python3 -m pip install --quiet requests
+          python3 car-spotter/tools/scrape_netcarshow.py
+
+      - name: Commit updated database
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add car-spotter/app/src/main/assets/cars.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Expand car database with netcarshow.com catalog"
+            git push
+          fi

@@ -8,6 +8,9 @@ object CarRepository {
     @Volatile
     private var cache: List<Car>? = null
 
+    @Volatile
+    private var bundledIdsCache: Set<String>? = null
+
     fun loadCars(context: Context): List<Car> {
         cache?.let { return it }
         synchronized(this) {
@@ -24,8 +27,9 @@ object CarRepository {
                         id = o.getString("id"),
                         make = o.getString("make"),
                         model = o.getString("model"),
-                        years = o.getString("years"),
-                        body = o.getString("body")
+                        years = o.optString("years"),
+                        body = o.optString("body"),
+                        img = o.optString("img").takeIf { it.isNotBlank() }
                     )
                 )
             }
@@ -34,6 +38,21 @@ object CarRepository {
             )
             cache = sorted
             return sorted
+        }
+    }
+
+    /** Ids of cars whose photo is bundled in the APK's assets. */
+    fun bundledImageIds(context: Context): Set<String> {
+        bundledIdsCache?.let { return it }
+        synchronized(this) {
+            bundledIdsCache?.let { return it }
+            val ids = context.assets.list("images")
+                ?.filter { it.endsWith(".jpg") }
+                ?.map { it.removeSuffix(".jpg") }
+                ?.toSet()
+                ?: emptySet()
+            bundledIdsCache = ids
+            return ids
         }
     }
 }

@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBar)
         emptyView = findViewById(R.id.emptyView)
 
-        adapter = CarListAdapter { car -> onCarClicked(car) }
+        adapter = CarListAdapter(CarRepository.bundledImageIds(this)) { car -> onCarClicked(car) }
         val list = findViewById<RecyclerView>(R.id.carList)
         list.layoutManager = LinearLayoutManager(this)
         list.adapter = adapter
@@ -77,21 +77,18 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val rows = ArrayList<Row>(visible.size + 48)
-        var currentMake: String? = null
-        for (car in visible) {
-            if (car.make != currentMake) {
-                currentMake = car.make
-                val group = visible.filter { it.make == car.make }
-                rows.add(
-                    Row.Header(
-                        make = car.make,
-                        spotted = group.count { spotted.contains(it.id) },
-                        total = group.size
-                    )
+        val rows = ArrayList<Row>(visible.size + 256)
+        for ((make, group) in visible.groupBy { it.make }) {
+            rows.add(
+                Row.Header(
+                    make = make,
+                    spotted = group.count { spotted.contains(it.id) },
+                    total = group.size
                 )
+            )
+            for (car in group) {
+                rows.add(Row.CarRow(car, spotted.contains(car.id)))
             }
-            rows.add(Row.CarRow(car, spotted.contains(car.id)))
         }
         adapter.submitList(rows)
 

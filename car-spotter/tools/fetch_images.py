@@ -115,7 +115,10 @@ def save_image(content, out_path):
 
 
 def main():
-    cars = json.loads((ASSETS / "cars.json").read_text(encoding="utf-8"))
+    all_cars = json.loads((ASSETS / "cars.json").read_text(encoding="utf-8"))
+    # Only curated entries (with a "wiki" title) get their photo bundled into
+    # the APK; scraped entries carry an "img" URL loaded at runtime instead.
+    cars = [c for c in all_cars if c.get("wiki")]
     IMAGES.mkdir(parents=True, exist_ok=True)
 
     pending = [c for c in cars if not (IMAGES / f"{c['id']}.jpg").exists()]
@@ -149,12 +152,13 @@ def main():
         time.sleep(DOWNLOAD_DELAY_S)
 
     ok = len(cars) - len(failures)
-    print(f"\n{ok}/{len(cars)} car images bundled")
+    print(f"\n{ok}/{len(cars)} curated car images bundled")
     if failures:
-        print("\nMissing images (placeholder will be shown in app):")
+        print("\nMissing images (placeholder or remote photo shown in app):")
         for cid, err in failures:
             print(f"  {cid}: {err}")
-    if ok < len(cars) * 0.7:
+    attempted_ok = len(pending) - len(failures)
+    if pending and attempted_ok < len(pending) * 0.7:
         print("Too many image fetches failed; aborting build.", file=sys.stderr)
         return 1
     return 0

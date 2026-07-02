@@ -5,7 +5,8 @@ data class Car(
     val make: String,
     val model: String,
     val years: String,
-    val body: String
+    val body: String,
+    val img: String? = null
 ) {
     val imageAssetPath: String get() = "file:///android_asset/images/$id.jpg"
 

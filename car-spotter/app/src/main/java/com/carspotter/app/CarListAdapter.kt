@@ -23,6 +23,7 @@ sealed class Row {
 }
 
 class CarListAdapter(
+    private val bundledImageIds: Set<String>,
     private val onCarClick: (Car) -> Unit
 ) : ListAdapter<Row, RecyclerView.ViewHolder>(DIFF) {
 
@@ -36,7 +37,11 @@ class CarListAdapter(
         return if (viewType == TYPE_HEADER) {
             HeaderHolder(inflater.inflate(R.layout.item_header, parent, false))
         } else {
-            CarHolder(inflater.inflate(R.layout.item_car, parent, false), onCarClick)
+            CarHolder(
+                inflater.inflate(R.layout.item_car, parent, false),
+                bundledImageIds,
+                onCarClick
+            )
         }
     }
 
@@ -59,7 +64,11 @@ class CarListAdapter(
         }
     }
 
-    class CarHolder(view: View, onCarClick: (Car) -> Unit) : RecyclerView.ViewHolder(view) {
+    class CarHolder(
+        view: View,
+        private val bundledImageIds: Set<String>,
+        onCarClick: (Car) -> Unit
+    ) : RecyclerView.ViewHolder(view) {
         private val photo: ImageView = view.findViewById(R.id.carPhoto)
         private val model: TextView = view.findViewById(R.id.carModel)
         private val details: TextView = view.findViewById(R.id.carDetails)
@@ -73,13 +82,22 @@ class CarListAdapter(
         fun bind(row: Row.CarRow) {
             current = row.car
             model.text = row.car.model
-            details.text = itemView.context.getString(
-                R.string.car_details, row.car.years, row.car.body
-            )
-            photo.load(row.car.imageAssetPath) {
+            details.text = if (row.car.body.isBlank()) {
+                row.car.years
+            } else {
+                itemView.context.getString(
+                    R.string.car_details, row.car.years, row.car.body
+                )
+            }
+            val source: String? = when {
+                row.car.id in bundledImageIds -> row.car.imageAssetPath
+                else -> row.car.img
+            }
+            photo.load(source) {
                 crossfade(true)
                 placeholder(R.drawable.ic_car_placeholder)
                 error(R.drawable.ic_car_placeholder)
+                fallback(R.drawable.ic_car_placeholder)
             }
             if (row.spotted) {
                 model.paintFlags = model.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
