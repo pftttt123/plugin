@@ -1,0 +1,107 @@
+package com.kawaiical.app.data.db
+
+/**
+ * Starter food dataset bundled with the app. Values are approximate,
+ * per the listed serving. Replaced/augmented later by a nutrition API.
+ */
+object SeedFoods {
+    private fun f(
+        name: String,
+        serving: String,
+        calories: Int,
+        protein: Float,
+        carbs: Float,
+        fat: Float,
+    ) = FoodItem(
+        name = name, serving = serving, calories = calories,
+        protein = protein, carbs = carbs, fat = fat,
+    )
+
+    val items: List<FoodItem> = listOf(
+        // Breakfast-y
+        f("Oatmeal (cooked)", "1 cup", 158, 6f, 27f, 3.2f),
+        f("Greek Yogurt (plain)", "170 g pot", 100, 17f, 6f, 0.7f),
+        f("Granola", "1/2 cup", 210, 5f, 32f, 7f),
+        f("Scrambled Eggs", "2 eggs", 182, 12f, 2f, 14f),
+        f("Boiled Egg", "1 large", 78, 6.3f, 0.6f, 5.3f),
+        f("Pancakes", "2 medium", 175, 5f, 28f, 5f),
+        f("Maple Syrup", "1 tbsp", 52, 0f, 13.4f, 0f),
+        f("Toast (white)", "1 slice", 75, 2.6f, 13.8f, 1f),
+        f("Toast (whole wheat)", "1 slice", 81, 4f, 13.8f, 1.1f),
+        f("Peanut Butter", "1 tbsp", 94, 4f, 3.5f, 8f),
+        f("Strawberry Jam", "1 tbsp", 56, 0.1f, 13.8f, 0f),
+        f("Croissant", "1 medium", 231, 4.7f, 26f, 12f),
+        f("Cereal (frosted flakes)", "1 cup", 130, 1.5f, 31f, 0.2f),
+        f("Whole Milk", "1 cup", 149, 7.7f, 11.7f, 8f),
+        f("Oat Milk", "1 cup", 120, 3f, 16f, 5f),
+        f("Almond Milk (unsweetened)", "1 cup", 39, 1.5f, 3.4f, 2.5f),
+        f("Banana Smoothie", "1 cup", 180, 5f, 36f, 2.5f),
+        f("Matcha Latte", "1 cup", 120, 4f, 18f, 3.5f),
+        f("Iced Coffee (with milk)", "1 cup", 45, 1.5f, 5f, 2f),
+        f("Bubble Tea (milk tea)", "500 ml", 325, 4f, 62f, 7f),
+
+        // Fruit & veg
+        f("Banana", "1 medium", 105, 1.3f, 27f, 0.4f),
+        f("Apple", "1 medium", 95, 0.5f, 25f, 0.3f),
+        f("Strawberries", "1 cup", 49, 1f, 11.7f, 0.5f),
+        f("Blueberries", "1 cup", 84, 1.1f, 21.4f, 0.5f),
+        f("Peach", "1 medium", 59, 1.4f, 14f, 0.4f),
+        f("Orange", "1 medium", 62, 1.2f, 15.4f, 0.2f),
+        f("Grapes", "1 cup", 104, 1.1f, 27.3f, 0.2f),
+        f("Watermelon", "1 cup diced", 46, 0.9f, 11.5f, 0.2f),
+        f("Avocado", "1/2 fruit", 161, 2f, 8.5f, 14.7f),
+        f("Baby Carrots", "10 pieces", 35, 0.6f, 8.2f, 0.1f),
+        f("Cucumber Slices", "1 cup", 16, 0.7f, 3.8f, 0.1f),
+        f("Edamame", "1 cup", 188, 18.5f, 13.8f, 8f),
+        f("Side Salad (no dressing)", "1 bowl", 33, 1.8f, 6.5f, 0.3f),
+        f("Caesar Dressing", "2 tbsp", 158, 1f, 1f, 17f),
+
+        // Lunch / dinner
+        f("Chicken Breast (grilled)", "100 g", 165, 31f, 0f, 3.6f),
+        f("Chicken Thigh (roasted)", "100 g", 209, 26f, 0f, 10.9f),
+        f("Salmon (baked)", "100 g", 208, 20f, 0f, 13f),
+        f("Tuna (canned in water)", "100 g", 116, 25.5f, 0f, 0.8f),
+        f("Tofu (firm)", "100 g", 76, 8f, 1.9f, 4.8f),
+        f("White Rice (cooked)", "1 cup", 205, 4.3f, 44.5f, 0.4f),
+        f("Brown Rice (cooked)", "1 cup", 216, 5f, 44.8f, 1.8f),
+        f("Pasta (cooked)", "1 cup", 221, 8.1f, 43.2f, 1.3f),
+        f("Marinara Sauce", "1/2 cup", 66, 1.8f, 10f, 2.1f),
+        f("Ramen (with broth)", "1 bowl", 436, 18f, 62f, 13f),
+        f("Onigiri (salmon)", "1 piece", 180, 5f, 36f, 1.5f),
+        f("Sushi Roll (california)", "8 pieces", 255, 9f, 38f, 7f),
+        f("Miso Soup", "1 bowl", 40, 3f, 5f, 1f),
+        f("Cheese Pizza", "1 slice", 285, 12f, 36f, 10f),
+        f("Cheeseburger", "1 burger", 303, 15.4f, 30.3f, 14f),
+        f("French Fries", "medium", 365, 4f, 48f, 17f),
+        f("Chicken Nuggets", "6 pieces", 280, 13f, 18f, 17f),
+        f("Burrito Bowl (chicken)", "1 bowl", 620, 40f, 62f, 22f),
+        f("Caesar Wrap", "1 wrap", 480, 25f, 43f, 23f),
+        f("Grilled Cheese Sandwich", "1 sandwich", 400, 13f, 34f, 24f),
+        f("Instant Noodles", "1 pack", 380, 8f, 54f, 14f),
+        f("Mac & Cheese", "1 cup", 310, 11f, 40f, 12f),
+        f("Curry with Rice", "1 plate", 550, 15f, 82f, 17f),
+        f("Pad Thai", "1 plate", 570, 22f, 74f, 20f),
+
+        // Snacks & sweets
+        f("Protein Bar", "1 bar", 200, 20f, 21f, 7f),
+        f("Protein Shake", "1 scoop + water", 120, 24f, 3f, 1.5f),
+        f("Almonds", "1/4 cup", 207, 7.6f, 7.7f, 17.9f),
+        f("Trail Mix", "1/4 cup", 173, 5f, 16.8f, 11f),
+        f("Potato Chips", "1 small bag (28 g)", 152, 2f, 15f, 9.8f),
+        f("Popcorn (air-popped)", "2 cups", 62, 2f, 12.4f, 0.7f),
+        f("Pretzels", "1 oz", 108, 2.9f, 22.5f, 0.8f),
+        f("Rice Cake", "1 cake", 35, 0.7f, 7.3f, 0.3f),
+        f("String Cheese", "1 stick", 80, 7f, 1f, 5f),
+        f("Dark Chocolate", "2 squares (20 g)", 120, 1.6f, 9.2f, 8.6f),
+        f("Milk Chocolate", "1 bar (44 g)", 235, 3.4f, 26f, 13f),
+        f("Chocolate Chip Cookie", "1 cookie", 78, 0.9f, 9.3f, 4.5f),
+        f("Mochi (red bean)", "1 piece", 100, 1.5f, 22f, 0.5f),
+        f("Pocky (chocolate)", "1 pack", 180, 3f, 26f, 7f),
+        f("Strawberry Ice Cream", "1/2 cup", 127, 2.1f, 18.2f, 5.5f),
+        f("Vanilla Cupcake", "1 cupcake", 240, 2.5f, 34f, 10.5f),
+        f("Donut (glazed)", "1 donut", 269, 4f, 31f, 14f),
+        f("Gummy Bears", "17 pieces", 140, 2f, 33f, 0f),
+        f("Soda (cola)", "1 can", 140, 0f, 39f, 0f),
+        f("Sparkling Water", "1 can", 0, 0f, 0f, 0f),
+    )
+}
