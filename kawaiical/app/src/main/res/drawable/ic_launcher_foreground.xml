@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Striped heart in the femboy flag colors on the pink adaptive background -->
+    <group>
+        <clip-path android:pathData="M54,79.5 C50,75.5 33,63 33,49.5 C33,40.4 40.2,34 48,34 C50.6,34 52.8,35 54,36.5 C55.2,35 57.4,34 60,34 C67.8,34 75,40.4 75,49.5 C75,63 58,75.5 54,79.5 Z" />
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M28,30 L80,30 L80,84 L28,84 Z" />
+        <path
+            android:fillColor="#FF8FB8"
+            android:pathData="M28,30 L80,30 L80,46 L28,46 Z" />
+        <path
+            android:fillColor="#A9D9F5"
+            android:pathData="M28,62 L80,62 L80,84 L28,84 Z" />
+    </group>
+    <!-- Face -->
+    <path
+        android:fillColor="#4A3B44"
+        android:pathData="M47,50 m-2,0 a2,2 0 1,1 4,0 a2,2 0 1,1 -4,0" />
+    <path
+        android:fillColor="#4A3B44"
+        android:pathData="M61,50 m-2,0 a2,2 0 1,1 4,0 a2,2 0 1,1 -4,0" />
+    <path
+        android:fillColor="#4A3B44"
+        android:pathData="M51,55 C52,57 56,57 57,55 C56,58.5 52,58.5 51,55 Z" />
+</vector>
