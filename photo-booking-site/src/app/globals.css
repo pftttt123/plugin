@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  /* Light & airy palette — swap these to rebrand the whole site. */
+  --color-paper: #fdfdfb; /* page background */
+  --color-mist: #f1f4ee; /* soft section background */
+  --color-line: #e0e6da; /* hairline borders */
+  --color-ink: #26302b; /* primary text — 13.9:1 on paper */
+  --color-fog: #57635a; /* secondary text — 6.3:1 on paper */
+  --color-sage: #64735f; /* accent */
+  --color-sage-deep: #40503c; /* buttons — 8.5:1 with white text */
+}
+
+/* `inline` is required: the font variables come from next/font on <body>,
+   so they must be resolved at the element using them, not on :root. */
+@theme inline {
+  --font-display: var(--font-cormorant);
+  --font-body: var(--font-inter);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--color-sage);
+  color: #fff;
+}
+
+/* Visible, consistent keyboard focus everywhere. */
+:focus-visible {
+  outline: 2px solid var(--color-sage-deep);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
