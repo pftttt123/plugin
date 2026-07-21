@@ -1,7 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { addOns, shootTypes, site } from "@/config/site";
@@ -42,12 +41,10 @@ function validate(data: FormData): Errors {
 }
 
 export default function BookingForm() {
-  const params = useSearchParams();
-  const preselected = params.get("type") ?? "";
   const reduce = useReducedMotion();
 
   const [data, setData] = useState<FormData>({
-    shootType: shootTypes.some((t) => t.slug === preselected) ? preselected : "",
+    shootType: "",
     otherDescription: "",
     date: "",
     time: "",
@@ -59,6 +56,21 @@ export default function BookingForm() {
     notes: "",
     addOns: [],
   });
+  // Preselect the shoot type from ?type= after mount (not via useSearchParams,
+  // which would force this whole page to client-side render behind Suspense).
+  useEffect(() => {
+    let search = window.location.search;
+    try {
+      search = (window.top ?? window).location.search || search;
+    } catch {
+      // cross-origin parent — keep our own search
+    }
+    const type = new URLSearchParams(search).get("type");
+    if (type && shootTypes.some((t) => t.slug === type)) {
+      setData((d) => (d.shootType ? d : { ...d, shootType: type }));
+    }
+  }, []);
+
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [demoMode, setDemoMode] = useState(false);
